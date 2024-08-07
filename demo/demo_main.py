@@ -10,15 +10,14 @@ from serpapi import GoogleSearch
 import  tkinter as tk
 from tkinter import filedialog
 
-random.seed(42)
 
-# openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
 
 def get_gpt_result(system_role, question, max_tokens):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4o",
         max_tokens=max_tokens,
         temperature=0,
         messages=[
@@ -92,13 +91,7 @@ def query_google(query):
 
 
 if __name__ == '__main__':
-    
-    # get openai key from user input
-    openai_key = input("* Please enter your OpenAI API key: ")
-    openai.api_key = openai_key
-    
-    # get google key from user input
-    google_key = input("* Please enter your Google API key: ")
+
     
     # ask user to choose database file
     print("* Please choose the database file to read: ")
@@ -117,8 +110,6 @@ if __name__ == '__main__':
     # ask user to ask a question
     question_original = input("* Please enter your question (Press Enter to use the default question): \nWhat is the number of booking start dates of the apartments with more than 2 bedrooms for each weekday? Draw a bar chart.")
     
-    if question_original == '':
-        question_original = "What is the number of booking start dates of the apartments with more than 2 bedrooms for each weekday? Draw a bar chart."
     
     # get schema string
     schema_file = open(schema_path, 'r').read()
@@ -169,28 +160,10 @@ if __name__ == '__main__':
     data = open('data.txt', 'r').read()
 
     print("*** Step3: generate analysis and insights")
-    user_input = input("* Would you like to use online information to generate analysis and insights? (yes/no): ")
+    user_input = input("* Lets proceed? ")
 
-    if user_input.lower() == 'yes':
-        # query online information from google
-        print('* Querying online information ...')
-        
-        query = question_original + '\nData: \n' + data
-        snippets = query_google(query)
-        if snippets is not None:
-            print("* Below is the online information:")
-            for x in range(len(snippets)):
-                print(str(x + 1) + ". " + snippets[x])
-
-            question = "Question: " + question_original + '\nData: \n' + data + '\nOnline information: \n' + str(snippets)
-            system_role = 'Generate analysis and insights about the data in 5 bullet points. Online information is provided but may not be relevant to the question. Only choose relevant information to generate deeper insights.'
-        else:
-            print("* No online information found. Generating analysis and insights without online information ...")
-            question = "Question: " + question_original + '\nData: \n' + data
-            system_role = 'Generate analysis and insights about the data in 5 bullet points.'
-    else:
-        question = "Question: " + question_original + '\nData: \n' + data
-        system_role = 'Generate analysis and insights about the data in 5 bullet points.'
+    question = "Question: " + question_original + '\nData: \n' + data
+    system_role = 'Generate analysis and insights about the data in 5 bullet points.'
 
 
     start3 = time.time()
