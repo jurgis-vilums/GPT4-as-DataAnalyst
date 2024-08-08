@@ -108,7 +108,7 @@ if __name__ == '__main__':
     print("Schema file:", schema_path)
     
     # ask user to ask a question
-    question_original = input("* Please enter your question (Press Enter to use the default question): \nWhat is the number of booking start dates of the apartments with more than 2 bedrooms for each weekday? Draw a bar chart.")
+    question_original = input("* Please enter your question \n")
     
     
     # get schema string
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     # get GPT result
     system_role = '''Write python code to select relevant data and draw the chart. Please save the plot to "figure.pdf" and save the label and value shown in the graph to "data.txt".'''
 
-    question = "Question: " + question_original + '\n\nconn = sqlite3.connect("' + database + '")\n\nSchema: \n' + schema
+    question = "Question: " + question_original + '\n\nconn = sqlite3.connect("' + database + '")\n\nSchema: \n' + schema    
     max_tokens = 2000
 
     print("*** Step1: generate code for extracting data and drawing the chart")

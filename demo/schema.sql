@@ -1,170 +1,348 @@
 PRAGMA foreign_keys = ON;
-
-CREATE TABLE Apartment_Buildings (
-building_id INTEGER NOT NULL,
-building_short_name CHAR(15),
-building_full_name VARCHAR(80),
-building_description VARCHAR(255),
-building_address VARCHAR(255),
-building_manager VARCHAR(50),
-building_phone VARCHAR(80),
-PRIMARY KEY (building_id),
-UNIQUE (building_id)
+CREATE TABLE `Addresses` (
+`address_id` INTEGER PRIMARY KEY,
+`address_details` VARCHAR(255)
 );
 
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (133, 'Normandie Court', 'Normandie Court', 'Studio', '7950 Casper Vista Apt. 176
-Marquiseberg, CA 70496', 'Emma', '(948)040-1064x387');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (153, 'Mercedes House', 'Mercedes House', 'Studio', '354 Otto Villages
-Charliefort, VT 71664', 'Brenden', '915-617-2408x832');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (191, 'The Eugene', 'The Eugene', 'Flat', '71537 Gorczany Inlet
-Wisozkburgh, AL 08256', 'Melyssa', '(609)946-0491');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (196, 'VIA 57 WEST', 'VIA 57 WEST', 'Studio', '959 Ethel Viaduct
-West Efrainburgh, DE 40074', 'Kathlyn', '681.772.2454');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (225, 'Columbus Square', 'Columbus Square', 'Studio', '0703 Danika Mountains Apt. 362
-Mohrland, AL 56839-5028', 'Kyle', '1-724-982-9507x640');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (532, 'Avalon Park', 'Avalon Park', 'Duplex', '6827 Kessler Parkway Suite 908
-Ahmedberg, WI 48788', 'Albert', '376-017-3538');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (556, 'Peter Cooper Village', 'Peter Cooper Village', 'Flat', '861 Narciso Glens Suite 392
-East Ottis, ND 73970', 'Darlene', '1-224-619-0295x13195');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (624, 'Stuyvesant Town', 'Stuyvesant Town', 'Studio', '101 Queenie Mountains Suite 619
-New Korbinmouth, KS 88726-1376', 'Marie', '(145)411-6406');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (644, 'The Anthem', 'The Anthem', 'Flat', '50804 Mason Isle Suite 844
-West Whitney, ID 66511', 'Ewald', '(909)086-5221x3455');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (673, 'Barclay Tower', 'Barclay Tower', 'Flat', '1579 Runte Forges Apt. 548
-Leuschkeland, OK 12009-8683', 'Rogers', '1-326-267-3386x613');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (734, 'Windsor Court', 'Windsor Court', 'Studio', '601 Graham Roads
-Port Luz, VA 29660-6703', 'Olaf', '(480)480-7401');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (744, 'Silver Towers', 'Silver Towers', 'Flat', '1844 Armstrong Stravenue Suite 853
-Myrnatown, CT 13528', 'Claude', '1-667-728-2287x3158');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (790, 'Biltmore Plaza', 'Biltmore Plaza', 'Duplex', '489 Josh Orchard Apt. 998
-Sipesview, DE 69053', 'Sydni', '544-148-5565x2847');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (808, 'Petersfield', 'Petersfield', 'Studio', '54686 Christopher Circles Apt. 321
-Daytonland, ID 88081-3991', 'Juvenal', '318-398-8140');
-INSERT INTO `Apartment_Buildings` (`building_id`, `building_short_name`, `building_full_name`, `building_description`, `building_address`, `building_manager`, `building_phone`) VALUES (968, 'The Clinton', 'The Clinton', 'Flat', '012 Arnoldo Mountain
-Gerholdland, ID 23342', 'Holly', '1-605-511-1973x25011');
 
-CREATE TABLE Apartments (
-apt_id INTEGER NOT NULL ,
-building_id INTEGER NOT NULL,
-apt_type_code CHAR(15),
-apt_number CHAR(10),
-bathroom_count INTEGER,
-bedroom_count INTEGER,
-room_count CHAR(5),
-PRIMARY KEY (apt_id),
-UNIQUE (apt_id),
-FOREIGN KEY (building_id) REFERENCES Apartment_Buildings (building_id)
-);
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (1, 808, 'Flat', 'Suite 645', 1, 3, '7');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (2, 624, 'Flat', 'Apt. 585', 2, 4, '5');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (3, 225, 'Studio', 'Apt. 908', 1, 6, '7');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (4, 225, 'Duplex', 'Suite 749', 1, 5, '8');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (5, 744, 'Flat', 'Suite 307', 2, 4, '9');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (6, 191, 'Studio', 'Apt. 187', 3, 5, '9');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (7, 790, 'Studio', 'Suite 088', 2, 4, '6');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (8, 153, 'Flat', 'Suite 693', 2, 3, '9');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (9, 624, 'Studio', 'Apt. 940', 1, 4, '8');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (10, 225, 'Duplex', 'Apt. 859', 2, 3, '6');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (11, 734, 'Flat', 'Apt. 794', 1, 5, '3');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (12, 673, 'Duplex', 'Apt. 477', 2, 6, '3');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (13, 744, 'Duplex', 'Apt. 411', 2, 5, '9');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (14, 225, 'Flat', 'Apt. 837', 2, 4, '8');
-INSERT INTO `Apartments` (`apt_id`, `building_id`, `apt_type_code`, `apt_number`, `bathroom_count`, `bedroom_count`, `room_count`) VALUES (15, 790, 'Duplex', 'Suite 634', 3, 6, '8');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (1, '28481 Crist Circle
+East Burdettestad, IA 21232');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (2, '0292 Mitchel Pike
+Port Abefurt, IA 84402-4249');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (3, '4062 Mante Place
+West Lindsey, DE 76199-8015');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (4, '99666 Julie Junction
+Marvinburgh, OH 16085-1623');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (5, '195 Mara Rue
+Jenkinsmouth, OK 22345');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (6, '11784 Stehr Road
+Port Isaac, NV 61159');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (7, '69482 Renner Ville Suite 653
+Langworthborough, OH 95195');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (8, '36594 O''Keefe Lock
+New Cali, RI 42319');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (9, '7181 Wuckert Port Apt. 571
+Lake Zariaburgh, IL 98085');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (10, '92594 Marvin Trafficway
+Pourosfurt, IA 98649');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (11, '0258 Kessler Mountains Suite 688
+Mooreside, ME 41586-5022');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (12, '69275 Mose Drive
+Wilkinsonstad, CO 79055-7622');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (13, '8207 Morissette Lakes
+East Rheaview, ID 47493');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (14, '145 Alice Corners
+Willmsport, NV 36680');
+INSERT INTO Addresses (`address_id`, `address_details`) VALUES (15, '521 Molly Harbors Apt. 567
+Reingerland, HI 97099-1005');
 
-CREATE TABLE Apartment_Facilities (
-apt_id INTEGER NOT NULL,
-facility_code CHAR(15) NOT NULL,
-PRIMARY KEY (apt_id, facility_code),
-FOREIGN KEY (apt_id) REFERENCES Apartments (apt_id)
-);
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (1, 'Boardband');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (2, 'Boardband');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (3, 'Gym');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (5, 'Swimming Pool');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (6, 'Cable TV');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (9, 'Boardband');
-INSERT INTO `Apartment_Facilities` (`apt_id`, `facility_code`) VALUES (15, 'Gym');
-CREATE TABLE Guests (
-guest_id INTEGER NOT NULL ,
-gender_code CHAR(1),
-guest_first_name VARCHAR(80),
-guest_last_name VARCHAR(80),
-date_of_birth DATETIME,
-PRIMARY KEY (guest_id),
-UNIQUE (guest_id)
+CREATE TABLE `Staff` (
+`staff_id` INTEGER PRIMARY KEY,
+`staff_gender` VARCHAR(1),
+`staff_name` VARCHAR(80)
 );
 
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (1, 'Male', 'Kip', 'DuBuque', '1995-11-04 07:09:57');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (2, 'Unknown', 'Rebeca', 'Runolfsdottir', '1974-05-12 21:53:58');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (3, 'Female', 'Keon', 'Treutel', '1974-08-20 09:28:05');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (4, 'Female', 'Gabe', 'Bode', '2007-09-11 19:01:39');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (5, 'Female', 'Lou', 'Grady', '1997-01-15 17:37:40');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (6, 'Unknown', 'Josefina', 'Jerde', '1978-03-08 04:43:04');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (7, 'Female', 'Mozell', 'Toy', '1997-01-20 17:11:31');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (8, 'Unknown', 'Keith', 'Hoeger', '2001-06-18 20:05:55');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (9, 'Female', 'Crystal', 'Runolfsson', '1971-01-04 04:22:58');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (10, 'Female', 'Nikki', 'Lehner', '1980-06-20 18:15:39');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (11, 'Male', 'Gregoria', 'Schowalter', '2015-02-03 23:34:13');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (12, 'Male', 'Louvenia', 'Crona', '1983-08-26 15:45:08');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (13, 'Female', 'Else', 'Roberts', '1971-11-02 01:51:56');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (14, 'Female', 'Juvenal', 'Kautzer', '2003-07-29 22:08:15');
-INSERT INTO `Guests` (`guest_id`, `gender_code`, `guest_first_name`, `guest_last_name`, `date_of_birth`) VALUES (15, 'Female', 'Tamia', 'Mante', '2013-02-22 11:26:22');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (1, '1', 'Tom');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (2, '1', 'Malika');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (3, '1', 'Katelynn');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (4, '1', 'Vanessa');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (5, '0', 'Maximus');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (6, '1', 'Tyson');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (7, '1', 'Yolanda');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (8, '1', 'Vito');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (9, '1', 'Zakary');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (10, '1', 'Sabrina');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (11, '1', 'Dannie');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (12, '1', 'Melody');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (13, '1', 'Archibald');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (14, '1', 'Adrienne');
+INSERT INTO Staff (`staff_id`, `staff_gender`, `staff_name`) VALUES (15, '1', 'Kristy');
 
-
-CREATE TABLE Apartment_Bookings (
-apt_booking_id INTEGER NOT NULL,
-apt_id INTEGER,
-guest_id INTEGER NOT NULL,
-booking_status_code CHAR(15) NOT NULL,
-booking_start_date DATETIME,
-booking_end_date DATETIME,
-PRIMARY KEY (apt_booking_id),
-UNIQUE (apt_booking_id),
-FOREIGN KEY (apt_id) REFERENCES Apartments (apt_id),
-FOREIGN KEY (guest_id) REFERENCES Guests (guest_id)
+CREATE TABLE `Suppliers` (
+`supplier_id` INTEGER PRIMARY KEY,
+`supplier_name` VARCHAR(80),
+`supplier_phone` VARCHAR(80)
 );
-CREATE TABLE View_Unit_Status (
-apt_id INTEGER,
-apt_booking_id INTEGER,
-status_date DATETIME NOT NULL,
-available_yn BIT,
-PRIMARY KEY (status_date),
-FOREIGN KEY (apt_id) REFERENCES Apartments (apt_id),
-FOREIGN KEY (apt_booking_id) REFERENCES Apartment_Bookings (apt_booking_id)
-);
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (258, 10, 2, 'Provisional', '2016-09-26 17:13:49', '2017-10-07 11:38:48');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (279, 15, 15, 'Provisional', '2016-04-01 06:28:08', '2017-10-25 11:08:42');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (337, 8, 5, 'Provisional', '2017-03-13 16:20:14', '2018-02-19 16:59:08');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (343, 4, 13, 'Confirmed', '2016-08-04 10:33:00', '2017-09-29 12:43:50');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (365, 9, 12, 'Confirmed', '2017-02-11 14:34:14', '2017-10-07 20:47:19');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (401, 7, 14, 'Provisional', '2016-05-24 20:09:38', '2017-10-03 01:56:21');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (497, 10, 8, 'Confirmed', '2016-07-25 02:57:04', '2017-09-28 11:08:15');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (526, 8, 7, 'Confirmed', '2016-11-26 05:04:31', '2018-02-25 15:15:37');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (575, 6, 3, 'Provisional', '2017-05-13 18:17:20', '2017-10-06 11:15:58');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (577, 12, 2, 'Provisional', '2017-03-04 02:23:49', '2018-02-06 16:57:05');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (623, 4, 5, 'Provisional', '2016-06-07 05:05:18', '2017-11-13 13:59:45');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (807, 11, 2, 'Provisional', '2016-04-17 12:53:59', '2018-03-20 17:32:58');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (889, 10, 4, 'Confirmed', '2016-09-28 05:00:50', '2017-09-30 18:41:04');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (920, 2, 2, 'Confirmed', '2017-04-07 04:53:27', '2017-11-29 12:59:42');
-INSERT INTO `Apartment_Bookings` (`apt_booking_id`, `apt_id`, `guest_id`, `booking_status_code`, `booking_start_date`, `booking_end_date`) VALUES (924, 8, 3, 'Confirmed', '2017-07-03 14:15:56', '2017-11-12 01:05:09');
 
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (11, 920, '1970-09-28 10:24:29', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (15, 575, '1972-03-23 22:55:53', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (15, 924, '1973-10-28 04:30:14', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (6, 497, '1976-12-18 04:03:51', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (12, 807, '1977-04-15 13:42:19', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (13, 575, '1978-12-28 11:53:34', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (2, 497, '1980-11-12 13:34:45', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (14, 401, '1985-11-05 11:46:35', '0');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (11, 497, '1990-11-04 17:57:50', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (13, 337, '2000-02-04 07:50:09', '0');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (14, 279, '2001-02-17 20:17:09', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (5, 337, '2003-07-25 10:13:48', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (1, 497, '2003-08-02 08:36:36', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (10, 497, '2006-02-23 05:50:04', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (6, 401, '2011-02-12 09:04:07', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (9, 623, '2011-11-06 22:08:42', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (14, 920, '2012-11-24 13:39:37', '0');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (4, 258, '2014-12-10 13:53:21', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (13, 343, '2015-06-19 07:59:01', '1');
-INSERT INTO `View_Unit_Status` (`apt_id`, `apt_booking_id`, `status_date`, `available_yn`) VALUES (5, 889, '2015-07-15 11:06:29', '1');
+INSERT INTO Suppliers (`supplier_id`, `supplier_name`, `supplier_phone`) VALUES (1, 'Lidl', '(692)009-5928');
+INSERT INTO Suppliers (`supplier_id`, `supplier_name`, `supplier_phone`) VALUES (2, 'AB Store', '1-483-283-4742');
+INSERT INTO Suppliers (`supplier_id`, `supplier_name`, `supplier_phone`) VALUES (3, 'Tesco', '287-071-1153x254');
+INSERT INTO Suppliers (`supplier_id`, `supplier_name`, `supplier_phone`) VALUES (4, 'Audi', '1-432-960-2402x1734');
+
+CREATE TABLE `Department_Store_Chain` (
+`dept_store_chain_id` INTEGER PRIMARY KEY,
+`dept_store_chain_name` VARCHAR(80)
+);
+
+INSERT INTO Department_Store_Chain (`dept_store_chain_id`, `dept_store_chain_name`) VALUES (1, 'South');
+INSERT INTO Department_Store_Chain (`dept_store_chain_id`, `dept_store_chain_name`) VALUES (2, 'West');
+INSERT INTO Department_Store_Chain (`dept_store_chain_id`, `dept_store_chain_name`) VALUES (3, 'East');
+INSERT INTO Department_Store_Chain (`dept_store_chain_id`, `dept_store_chain_name`) VALUES (4, 'North');
+
+
+CREATE TABLE `Customers` (
+`customer_id` INTEGER PRIMARY KEY,
+`payment_method_code` VARCHAR(10) NOT NULL,
+`customer_code` VARCHAR(20),
+`customer_name` VARCHAR(80),
+`customer_address` VARCHAR(255),
+`customer_phone` VARCHAR(80),
+`customer_email` VARCHAR(80)
+);
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (1, 'Credit Card', '401', 'Ahmed', '75099 Tremblay Port Apt. 163
+South Norrisland, SC 80546', '254-072-4068x33935', 'margarett.vonrueden@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (2, 'Credit Card', '665', 'Chauncey', '8408 Lindsay Court
+East Dasiabury, IL 72656-3552', '+41(8)1897032009', 'stiedemann.sigrid@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (3, 'Direct Debit', '844', 'Lukas', '7162 Rodolfo Knoll Apt. 502
+Lake Annalise, TN 35791-8871', '197-417-3557', 'joelle.monahan@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (4, 'Direct Debit', '662', 'Lexus', '9581 Will Flat Suite 272
+East Cathryn, WY 30751-4404', '+08(3)8056580281', 'gbrekke@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (5, 'Credit Card', '848', 'Tara', '5065 Mraz Fields Apt. 041
+East Chris, NH 41624', '1-064-498-6609x051', 'nicholas44@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (6, 'Credit Card', '916', 'Jon', '841 Goyette Unions
+South Dionbury, NC 62021', '(443)013-3112x528', 'cconroy@example.net');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (7, 'Credit Card', '172', 'Cristobal', '8327 Christiansen Lakes Suite 409
+Schneiderland, IA 93624', '877-150-8674x63517', 'shawna.cummerata@example.net');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (8, 'Direct Debit', '927', 'Adah', '5049 Hand Land
+Coymouth, IL 97300-7731', '1-695-364-7586x59256', 'kathlyn24@example.org');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (9, 'Credit Card', '808', 'Yasmeen', '3558 Witting Meadow Apt. 483
+Lake Moriahbury, OH 91556-2122', '587.398.2400x31176', 'ludwig54@example.net');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (10, 'Credit Card', '887', 'Karson', '7308 Joan Lake Suite 346
+Lizethtown, DE 56522', '857-844-9339x40140', 'moriah91@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (11, 'Direct Debit', '611', 'Cordell', '362 Fisher Forge Apt. 900
+New Mckenna, CA 98525-5674', '(730)934-8249', 'qstokes@example.org');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (12, 'Credit Card', '182', 'Darron', '84445 Elinor Glens
+Port Zita, SD 39410', '117.822.3577', 'gwisozk@example.net');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (13, 'Credit Card', '589', 'Kenya', '338 Floy Mountains Suite 589
+Yesseniaville, TN 60847', '08023680831', 'maxime86@example.net');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (14, 'Direct Debit', '240', 'Abbie', '983 Elinore Passage
+Darrionborough, SC 53915-0479', '07594320656', 'celine.bogan@example.com');
+INSERT INTO Customers (`customer_id`, `payment_method_code`, `customer_code`, `customer_name`, `customer_address`, `customer_phone`, `customer_email`) VALUES (15, 'Credit Card', '980', 'Lyric', '649 Ocie Lights
+Wyatttown, UT 12697', '1-472-036-0434', 'schultz.arnoldo@example.net');
+
+
+CREATE TABLE `Products` (
+`product_id` INTEGER PRIMARY KEY,
+`product_type_code` VARCHAR(10) NOT NULL,
+`product_name` VARCHAR(80),
+`product_price` DECIMAL(19,4)
+);
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (1, 'Clothes', 'red jeans', '734.7300');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (2, 'Clothes', 'yellow jeans', '687.2300');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (3, 'Clothes', 'black jeans', '695.1600');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (4, 'Clothes', 'blue jeans', '939.5700');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (5, 'Clothes', 'red jeans', '534.5200');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (6, 'Clothes', 'red topping', '408.8200');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (7, 'Clothes', 'black topping', '916.5300');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (8, 'Clothes', 'yellow topping', '918.4100');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (9, 'Clothes', 'blue topping', '604.8600');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (10, 'Hardware', 'monitor', '813.7600');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (11, 'Hardware', 'mouse', '803.7400');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (12, 'Hardware', 'drive', '944.9600');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (13, 'Hardware', 'keyboard', '629.8900');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (14, 'Hardware', 'speaker', '612.4600');
+INSERT INTO Products (`product_id`, `product_type_code`, `product_name`, `product_price`) VALUES (15, 'Hardware', 'mic', '971.4400');
+
+CREATE TABLE `Supplier_Addresses` (
+`supplier_id` INTEGER NOT NULL,
+`address_id` INTEGER NOT NULL,
+`date_from` DATETIME NOT NULL,
+`date_to` DATETIME,
+PRIMARY KEY (`supplier_id`, `address_id`),
+FOREIGN KEY (`address_id` ) REFERENCES `Addresses`(`address_id` ),
+FOREIGN KEY (`supplier_id` ) REFERENCES `Suppliers`(`supplier_id` )
+);
+
+INSERT INTO Supplier_Addresses (`supplier_id`, `address_id`, `date_from`, `date_to`) VALUES (4, 5, '2016-09-22 16:41:31', '2018-03-14 20:06:37');
+INSERT INTO Supplier_Addresses (`supplier_id`, `address_id`, `date_from`, `date_to`) VALUES (3, 9, '2014-11-07 19:18:49', '2018-03-16 16:39:58');
+INSERT INTO Supplier_Addresses (`supplier_id`, `address_id`, `date_from`, `date_to`) VALUES (3, 2, '2008-11-22 12:01:25', '2018-03-02 19:50:22');
+INSERT INTO Supplier_Addresses (`supplier_id`, `address_id`, `date_from`, `date_to`) VALUES (2, 11, '2015-03-16 19:30:29', '2018-03-24 00:14:45');
+
+
+CREATE TABLE `Customer_Addresses` (
+`customer_id` INTEGER NOT NULL,
+`address_id` INTEGER NOT NULL,
+`date_from` DATETIME NOT NULL,
+`date_to` DATETIME,
+PRIMARY KEY (`customer_id`, `address_id`),
+FOREIGN KEY (`address_id` ) REFERENCES `Addresses`(`address_id` ),
+FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` )
+);
+
+
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (2, 9, '2017-12-11 05:00:22', '2018-03-20 20:52:34');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (1, 6, '2017-10-07 23:00:26', '2018-02-28 14:53:52');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (10, 8, '2017-04-04 20:00:27', '2018-02-27 20:08:33');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (1, 9, '2017-12-14 07:40:08', '2018-03-24 14:31:59');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (1, 2, '2017-07-31 20:18:52', '2018-03-12 05:32:28');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (8, 2, '2018-01-27 06:27:34', '2018-03-23 17:49:51');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (1, 14, '2017-08-06 20:57:36', '2018-03-05 21:19:53');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (6, 13, '2017-09-07 04:41:01', '2018-02-27 23:10:07');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (7, 7, '2017-10-02 19:56:27', '2018-03-22 17:22:34');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (8, 4, '2018-01-15 12:05:39', '2018-03-13 21:49:51');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (7, 4, '2018-02-22 04:46:48', '2018-02-26 00:52:25');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (2, 4, '2017-11-28 23:36:20', '2018-03-02 17:46:11');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (12, 14, '2017-11-01 04:21:41', '2018-03-05 16:18:34');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (7, 10, '2018-01-07 13:31:08', '2018-03-09 07:06:56');
+INSERT INTO Customer_Addresses (`customer_id`, `address_id`, `date_from`, `date_to`) VALUES (4, 12, '2017-08-27 13:38:37', '2018-03-17 15:44:10');
+
+
+
+CREATE TABLE `Customer_Orders` (
+`order_id` INTEGER PRIMARY KEY,
+`customer_id` INTEGER NOT NULL,
+`order_status_code` VARCHAR(10) NOT NULL,
+`order_date` DATETIME NOT NULL,
+FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` )
+);
+
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (1, 12, 'Completed', '2018-02-10 15:44:48');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (2, 4, 'New', '2018-01-31 17:49:18');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (3, 1, 'PartFilled', '2018-02-26 12:39:33');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (4, 4, 'Pending', '2018-03-07 16:55:17');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (5, 4, 'New', '2018-02-12 19:34:12');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (6, 11, 'PartFilled', '2018-03-06 16:35:51');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (7, 1, 'Cancelled', '2018-02-15 02:25:32');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (8, 13, 'Pending', '2018-03-05 23:17:54');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (9, 7, 'Pending', '2018-02-09 11:16:46');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (10, 11, 'Cancelled', '2018-03-22 10:49:25');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (11, 8, 'Cancelled', '2018-02-16 19:42:39');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (12, 4, 'New', '2018-02-02 23:42:01');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (13, 15, 'PartFilled', '2018-02-26 05:34:18');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (14, 6, 'Completed', '2018-03-18 15:12:39');
+INSERT INTO Customer_Orders (`order_id`, `customer_id`, `order_status_code`, `order_date`) VALUES (15, 10, 'Pending', '2018-03-16 22:42:46');
+
+
+CREATE TABLE `Department_Stores` (
+`dept_store_id` INTEGER PRIMARY KEY,
+`dept_store_chain_id` INTEGER,
+`store_name` VARCHAR(80),
+`store_address` VARCHAR(255),
+`store_phone` VARCHAR(80),
+`store_email` VARCHAR(80),
+FOREIGN KEY (`dept_store_chain_id` ) REFERENCES `Department_Store_Chain`(`dept_store_chain_id` )
+);
+
+
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (1, 1, 'store_name', '01290 Jeremie Parkway Suite 753
+North Arielle, MS 51249', '(948)944-5099x2027', 'bmaggio@example.com');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (2, 3, 'store_name', '082 Purdy Expressway
+O''Connellshire, IL 31732', '877-917-5029', 'larissa10@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (3, 4, 'store_name', '994 Travis Plains
+North Wadeton, WV 27575-3951', '1-216-312-0375', 'alexandro.mcclure@example.net');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (4, 2, 'store_name', '93472 Mayert Shore Apt. 360
+Mitchellton, TN 84209', '670-466-6367', 'bryon24@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (5, 3, 'store_name', '88112 Parisian Lights
+Sporermouth, MN 25962', '01399327266', 'creola23@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (6, 4, 'store_name', '49708 Marcella Valleys Suite 181
+Ninamouth, WA 86667', '1-859-843-1957', 'jerod.reynolds@example.net');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (7, 4, 'store_name', '41924 Alfredo Cliff
+New Eviestad, NY 17573', '1-109-872-9142x77078', 'ihamill@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (8, 4, 'store_name', '7081 Shanna Cape
+West Zacheryshire, NC 17408', '+67(5)4983519062', 'casper.adolfo@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (9, 4, 'store_name', '5288 Kaia Street
+Devonton, NJ 61782-9006', '(723)503-7086x356', 'selmer.stiedemann@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (10, 3, 'store_name', '00578 Lisa Gateway Suite 476
+Strosinville, VA 03998-3292', '07126036440', 'luisa57@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (11, 2, 'store_name', '34894 Everett Road
+South Jeremiehaven, GA 08730', '611-037-9309', 'vonrueden.vern@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (12, 4, 'store_name', '2676 Cruickshank Gardens
+North Ginahaven, CT 85046', '(626)763-7031', 'freda.toy@example.org');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (13, 2, 'store_name', '29297 West Road Suite 210
+West Dulceside, UT 58085-8998', '1-764-126-7567x0795', 'katlynn62@example.com');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (14, 1, 'store_name', '16650 Lysanne River Apt. 281
+North Garettton, AL 84756-4375', '319.331.3397', 'mohr.elwin@example.net');
+INSERT INTO Department_Stores (`dept_store_id`, `dept_store_chain_id`, `store_name`, `store_address`, `store_phone`, `store_email`) VALUES (15, 3, 'store_name', '82470 Hansen Squares Suite 190
+Wehnermouth, NC 76791', '(587)993-3604x3077', 'kelly30@example.com');
+
+
+CREATE TABLE `Departments` (
+`department_id` INTEGER PRIMARY KEY,
+`dept_store_id` INTEGER NOT NULL,
+`department_name` VARCHAR(80),
+FOREIGN KEY (`dept_store_id` ) REFERENCES `Department_Stores`(`dept_store_id` )
+);
+INSERT INTO Departments (`department_id`, `dept_store_id`, `department_name`) VALUES (1, 5, 'human resource');
+INSERT INTO Departments (`department_id`, `dept_store_id`, `department_name`) VALUES (2, 11, 'purchasing');
+INSERT INTO Departments (`department_id`, `dept_store_id`, `department_name`) VALUES (3, 4, 'marketing');
+INSERT INTO Departments (`department_id`, `dept_store_id`, `department_name`) VALUES (4, 11, 'advertising');
+INSERT INTO Departments (`department_id`, `dept_store_id`, `department_name`) VALUES (5, 4, 'managing');
+
+
+CREATE TABLE `Order_Items` (
+`order_item_id` INTEGER PRIMARY KEY,
+`order_id` INTEGER NOT NULL,
+`product_id` INTEGER NOT NULL,
+FOREIGN KEY (`order_id` ) REFERENCES `Customer_Orders`(`order_id` ),
+FOREIGN KEY (`product_id` ) REFERENCES `Products`(`product_id` )
+);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (1, 9, 7);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (2, 1, 3);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (3, 5, 2);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (4, 14, 10);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (5, 15, 4);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (6, 14, 13);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (7, 6, 13);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (8, 12, 8);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (9, 13, 12);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (10, 14, 13);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (11, 7, 11);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (12, 14, 14);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (13, 15, 5);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (14, 8, 10);
+INSERT INTO Order_Items (`order_item_id`, `order_id`, `product_id`) VALUES (15, 5, 4);
+CREATE TABLE `Product_Suppliers` (
+`product_id` INTEGER NOT NULL,
+`supplier_id` INTEGER NOT NULL,
+`date_supplied_from` DATETIME NOT NULL,
+`date_supplied_to` DATETIME,
+`total_amount_purchased` VARCHAR(80),
+`total_value_purchased` DECIMAL(19,4),
+PRIMARY KEY (`product_id`, `supplier_id`),
+FOREIGN KEY (`supplier_id` ) REFERENCES `Suppliers`(`supplier_id` ),
+FOREIGN KEY (`product_id` ) REFERENCES `Products`(`product_id` )
+);
+
+
+CREATE TABLE `Staff_Department_Assignments` (
+`staff_id` INTEGER NOT NULL,
+`department_id` INTEGER NOT NULL,
+`date_assigned_from` DATETIME NOT NULL,
+`job_title_code` VARCHAR(10) NOT NULL,
+`date_assigned_to` DATETIME,
+PRIMARY KEY (`staff_id`, `department_id`),
+FOREIGN KEY (`department_id` ) REFERENCES `Departments`(`department_id` ),
+FOREIGN KEY (`staff_id` ) REFERENCES `Staff`(`staff_id` )
+);
+
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (4, 3, '2017-06-19 00:49:05', '2018-03-24 19:29:18', '89366.05', '36014.6000');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (8, 4, '2017-07-02 00:35:12', '2018-03-25 07:30:49', '25085.57', '36274.5600');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (3, 3, '2017-10-14 19:15:37', '2018-03-24 02:29:44', '15752.45', '7273.7400');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (7, 1, '2017-08-22 00:58:42', '2018-03-24 02:38:31', '22332.08', '8042.7800');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (15, 4, '2017-12-08 09:14:05', '2018-03-24 23:03:30', '25318.21', '29836.2600');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (11, 1, '2017-12-01 19:46:53', '2018-03-24 05:22:36', '35149.74', '67216.3100');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (11, 3, '2017-07-13 15:02:24', '2018-03-24 23:01:03', '31862.59', '76992.4200');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (5, 2, '2017-07-28 19:23:39', '2018-03-24 09:17:15', '85922.86', '82524.9500');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (6, 2, '2017-12-20 07:07:31', '2018-03-24 23:25:58', '64444.18', '97371.1200');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (4, 1, '2017-09-19 02:14:02', '2018-03-25 09:15:30', '32881.38', '29987.7100');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (15, 2, '2017-08-07 12:08:00', '2018-03-23 19:21:12', '13712.91', '48100.2300');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (4, 4, '2017-06-09 01:30:40', '2018-03-24 12:35:08', '79316.31', '98086.8000');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (8, 2, '2017-06-25 14:59:40', '2018-03-24 12:27:13', '83873.58', '99049.0100');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (7, 4, '2017-11-17 08:23:16', '2018-03-25 12:03:33', '20689.78', '61800.9500');
+INSERT INTO Product_Suppliers (`product_id`, `supplier_id`, `date_supplied_from`, `date_supplied_to`, `total_amount_purchased`, `total_value_purchased`) VALUES (14, 1, '2017-08-09 21:26:38', '2018-03-24 18:16:47', '20447.99', '27257.6000');
+
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (5, 4, '2017-06-11 22:55:20', 'Department Manager', '2018-03-23 21:59:11');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (10, 5, '2017-12-18 19:12:15', 'Sales Person', '2018-03-23 20:25:24');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (1, 5, '2018-02-14 03:15:29', 'Clerical Staff', '2018-03-24 19:57:56');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (8, 1, '2017-05-14 12:30:33', 'Clerical Staff', '2018-03-25 03:15:31');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (15, 2, '2017-03-31 23:07:54', 'Department Manager', '2018-03-24 09:11:14');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (2, 5, '2017-11-14 04:38:44', 'Administration', '2018-03-24 07:04:28');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (9, 4, '2016-09-20 02:59:15', 'Sales Person', '2018-03-24 20:13:13');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (8, 2, '2017-05-10 02:32:17', 'Administration', '2018-03-24 02:36:57');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (3, 5, '2016-10-19 08:11:39', 'Clerical Staff', '2018-03-25 15:34:31');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (6, 1, '2017-12-26 06:34:20', 'Department Manager', '2018-03-25 09:53:37');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (6, 2, '2016-09-15 11:00:41', 'Administration', '2018-03-25 02:29:08');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (8, 5, '2017-06-06 22:22:17', 'Clerical Staff', '2018-03-24 13:02:22');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (12, 5, '2016-11-12 14:10:55', 'Sales Person', '2018-03-25 02:59:19');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (7, 3, '2016-05-17 07:02:37', 'Clerical Staff', '2018-03-24 10:45:21');
+INSERT INTO Staff_Department_Assignments (`staff_id`, `department_id`, `date_assigned_from`, `job_title_code`, `date_assigned_to`) VALUES (2, 3, '2016-06-24 17:31:24', 'Administration', '2018-03-25 13:32:57');
