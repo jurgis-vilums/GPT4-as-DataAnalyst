@@ -18,7 +18,7 @@ def home():
 
 def get_gpt_result(system_role, question, max_tokens):
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-4o",
         max_tokens=max_tokens,
         temperature=0,
         messages=[
