@@ -12,6 +12,10 @@ DATABASE_PATH = r"C:\Users\Padre\Documents\dev\GPT4-as-DataAnalyst\sql_database\
 SCHEMA_PATH = os.path.join(os.path.dirname(__file__), "schema.sql")
 
 
+@app.route("/")
+def home():
+    return "<h1>Flask Application is Running!</h1>"
+
 def get_gpt_result(system_role, question, max_tokens):
     response = openai.ChatCompletion.create(
         model="gpt-4",
